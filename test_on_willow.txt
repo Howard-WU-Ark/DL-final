@@ -1,0 +1,101 @@
+gt perm mat cache built
+BATCH_SIZE: 8
+PROBLEM:
+  TYPE: 2GM
+  UNSUPERVISED: False
+  RESCALE: [256, 256]
+  FILTER: intersection
+  MAX_PROB_SIZE: -1
+  NUM_GRAPHS: 3
+  NUM_CLUSTERS: 1
+  TEST_ALL_GRAPHS: False
+  TRAIN_ALL_GRAPHS: False
+GRAPH:
+  SRC_GRAPH_CONSTRUCT: tri
+  TGT_GRAPH_CONSTRUCT: tri
+  SYM_ADJACENCY: True
+  PADDING: 23
+TRAIN:
+  EPOCH_ITERS: 200
+  START_EPOCH: 0
+  NUM_EPOCHS: 30
+  OPTIMIZER: SGD
+  LR: 0.00012
+  SEPARATE_BACKBONE_LR: False
+  BACKBONE_LR: 0.01
+  LR_DECAY: 0.2
+  LR_STEP: [20]
+  MOMENTUM: 0.9
+  RLOSS_NORM: 256
+  CLASS: none
+  LOSS_FUNC: hung
+EVAL:
+  EPOCH: 23
+  SAMPLES: 1000
+  CLASS: all
+BACKBONE: VGG16_bn
+GPUS: [0]
+DATALOADER_NUM: 2
+PRETRAINED_PATH: ../pretrained/pretrained_params_vgg16_cie_willow.pt
+NORM_MEANS: [0.485, 0.456, 0.406]
+NORM_STD: [0.229, 0.224, 0.225]
+CACHE_PATH: data/cache
+MODEL_NAME: vgg16_cie
+DATASET_NAME: willow
+DATASET_FULL_NAME: WillowObject
+MODULE: models.CIE.model
+OUTPUT_PATH: output/vgg16_cie_willow
+STATISTIC_STEP: 100
+RANDOM_SEED: 123
+FP16: False
+CIE:
+  FEATURE_CHANNEL: 512
+  SK_ITER_NUM: 20
+  SK_EPSILON: 1e-10
+  SK_TAU: 0.005
+  GNN_LAYER: 2
+  GNN_FEAT: 2048
+  CROSS_ITER: False
+WillowObject:
+  TRAIN_NUM: 20
+  SPLIT_OFFSET: 0
+Loading model parameters from ../pretrained/pretrained_params_vgg16_cie_willow.pt
+Start evaluation...
+Evaluating class Car: 0/5
+Class Car: p = 0.9332±0.1257, r = 0.9332±0.1257, f1 = 0.9332±0.1257, cvg = 1.0000
+Class Car norm obj score = nan
+Class Car pred time = 0.1382±0.0563s
+Evaluating class Duck: 1/5
+Class Duck: p = 0.9014±0.1847, r = 0.9014±0.1847, f1 = 0.9014±0.1847, cvg = 1.0000
+Class Duck norm obj score = nan
+Class Duck pred time = 0.1277±0.0127s
+Evaluating class Face: 2/5
+Class Face     Iteration 100  6.57sample/s
+Class Face: p = 0.9987±0.0170, r = 0.9987±0.0170, f1 = 0.9987±0.0170, cvg = 0.2612
+Class Face norm obj score = nan
+Class Face pred time = 0.1474±0.0169s
+Evaluating class Motorbike: 3/5
+Class Motorbike: p = 0.9611±0.0892, r = 0.9611±0.0892, f1 = 0.9611±0.0892, cvg = 1.0000
+Class Motorbike norm obj score = nan
+Class Motorbike pred time = 0.1480±0.0133s
+Evaluating class Winebottle: 4/5
+Class Winebottle Iteration 100  6.88sample/s
+Class Winebottle: p = 0.9443±0.1269, r = 0.9443±0.1269, f1 = 0.9443±0.1269, cvg = 0.9662
+Class Winebottle norm obj score = nan
+Class Winebottle pred time = 0.1437±0.0301s
+Matching accuracy
+Car: p = 0.9332±0.1257, r = 0.9332±0.1257, f1 = 0.9332±0.1257, cvg = 1.0000
+Duck: p = 0.9014±0.1847, r = 0.9014±0.1847, f1 = 0.9014±0.1847, cvg = 1.0000
+Face: p = 0.9987±0.0170, r = 0.9987±0.0170, f1 = 0.9987±0.0170, cvg = 0.2612
+Motorbike: p = 0.9611±0.0892, r = 0.9611±0.0892, f1 = 0.9611±0.0892, cvg = 1.0000
+Winebottle: p = 0.9443±0.1269, r = 0.9443±0.1269, f1 = 0.9443±0.1269, cvg = 0.9662
+average accuracy: p = 0.9477±0.1087, r = 0.9477±0.1087, f1 = 0.9477±0.1087
+Evaluation complete in 6m 58s
+Predict time
+Car = 0.1382±0.0563
+Duck = 0.1277±0.0127
+Face = 0.1474±0.0169
+Motorbike = 0.1480±0.0133
+Winebottle = 0.1437±0.0301
+average time = 0.1425±0.0268
+gt perm mat cache deleted
